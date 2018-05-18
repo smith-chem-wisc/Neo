@@ -1,0 +1,201 @@
+﻿<Window x:Class="Neo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Neo"
+        mc:Ignorable="d"
+        Title="Neo"
+        WindowStartupLocation="CenterScreen" MinHeight="400" MinWidth="800" Height="500" Width="800">
+    <DockPanel>
+        <Menu x:Name="menu" DockPanel.Dock="Top">
+            <MenuItem Header="Settings">
+                <MenuItem Header="Close Neo and open global settings file" ></MenuItem>
+                <MenuItem Header="Close Neo and open GUI settings file" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Data">
+                <MenuItem Header="Open folder with mods/data files" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="Check For Updates"  />
+                <MenuItem Header="Open Wiki Page" />
+                <MenuItem Header="Submit an Issue on Github"  />
+                <MenuItem Header="Email Support at mm_support@chem.wisc.edu" />
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*" MinHeight="100" />
+                    <RowDefinition Height="2*" MinHeight="50" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="3*" MinHeight="100" />
+                    <RowDefinition Height="2*" MinHeight="50" />
+                </Grid.RowDefinitions>
+                <GroupBox Header="RNA Data Files" Name="GbRNAdata">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="13"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="normal" />
+                        </StackPanel>
+                        <DataGrid x:Name="dataGridMassData1" Grid.Row="1" ItemsSource="{Binding}" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" Background="#FF96DBF0">
+                            <DataGrid.Resources>
+                            </DataGrid.Resources>
+                        </DataGrid>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2">
+                            <Button x:Name="AddXML" Content="Add"  />
+                            <Button x:Name="ClearXML" Content="Clear"  />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="2">
+                            <Label Content="Tumor" />
+                        </StackPanel>
+                        <DataGrid x:Name="dataGridMassData2" Grid.Row="1" Grid.Column="2" ItemsSource="{Binding}" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" Background="#FFF3A8A8">
+                            <DataGrid.Resources>
+                            </DataGrid.Resources>
+                        </DataGrid>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="2" >
+                            <Button x:Name="AddXML2" Content="Add"  />
+                            <Button x:Name="ClearXML2" Content="Clear"  />
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="RNA Reference Databases" Grid.Row="1">
+                    <DataGrid x:Name="dataGridRNADatabases" ItemsSource="{Binding}" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False">
+                        <DataGrid.Resources>
+                        </DataGrid.Resources>
+                    </DataGrid>
+                </GroupBox>
+                <GridSplitter Grid.Row="2"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Stretch"
+                        Background="Silver"
+                        Height="5" />
+                <GroupBox Header="Mass Spectra Files" Grid.Row="3"  Name="datafilesGroupBox">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="13"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="Normal" />
+                        </StackPanel>
+                        <DataGrid x:Name="dataGridSpectraFiles" Grid.Row="1" ItemsSource="{Binding}" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" DockPanel.Dock="Top" Background="#FF96DBF0">
+
+                        </DataGrid>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2">
+                            <Button x:Name="AddRaw" Content="Add"  />
+                            <Button x:Name="ClearRaw" Content="Clear"  />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="2">
+                            <Label Content="Tumor" />
+                        </StackPanel>
+                        <DataGrid x:Name="dataGridSpectraFiles2" Grid.Row="1" Grid.Column="2" ItemsSource="{Binding}" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" DockPanel.Dock="Top" Background="#FFF3A8A8">
+
+                        </DataGrid>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="2">
+                            <Button x:Name="AddRaw2" Content="Add"  />
+                            <Button x:Name="ClearRaw2" Content="Clear"  />
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="Protein Reference Databases" Grid.Row="4">
+                    <DataGrid x:Name="dataGridProteinDatabases" ItemsSource="{Binding}" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False">
+                        <DataGrid.Resources>
+                            
+                        </DataGrid.Resources>
+                    </DataGrid>
+                </GroupBox>
+            </Grid>
+            <GridSplitter Grid.Column="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Stretch"
+                        Background="Silver"
+                        Width="5" />
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <GroupBox Header="Tasks" Name="tasksGroupBox">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="36" />
+                            <RowDefinition Height="40" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button x:Name="addSearchTaskButton" Content="Database Creation"  />
+                            <Button x:Name="addCalibrateTaskButton" Content="PTM Discovery"  />
+                            <Button x:Name="addGPTMDTaskButton" Content="Identification" />
+                            <Button x:Name="btnAddCrosslinkSearch" Content="Quantification"  />
+                            <Button x:Name="btnAddCrosslinkSearch2" Content="Validation"  />
+                        </StackPanel>
+                        <!--<TreeView x:Name="tasksTreeView" Grid.Row="2" ItemsSource="{Binding}" >
+                            <TreeView.Resources>
+                            </TreeView.Resources>
+                        </TreeView>-->
+                        <GroupBox Grid.Row="2">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                                <Label Content="Task1 Database Creation"/>
+                                <Label Content="Task2 PTM Discovery"/>
+                                <Label Content="Task3 Peptide Identificaiton"/>
+                                <Label Content="Task4 Peptide Quantification"/>
+                                <Label Content="Task5 Peptide Validation"/>
+                                <Label Content=""/>
+                            </StackPanel>
+                        </GroupBox>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="3">
+                            <Button x:Name="LoadTaskButton" Content="Load" />
+                            <Button x:Name="ClearTasksButton" Content="Clear"  />
+                            <Button x:Name="DeleteSelectedTaskButton" Content="Delete Task"  />
+                            <Button x:Name="ResetTasksButton" Content="Reset Tasks" />
+                        </StackPanel>
+                        <DockPanel Margin="5" Grid.Row="4" LastChildFill="True">
+                            <Label Content="Output Folder:" />
+                            <TextBox x:Name="OutputFolderTextBox" Text="C:\My Result\" ToolTip="$DATETIME is automatically replaced by the current date and time" />
+                        </DockPanel>
+                        <Button x:Name="RunTasksButton" Content="Run all tasks!"  FontSize="24" Grid.Row="5" />
+                    </Grid>
+                </GroupBox>
+                <GridSplitter Grid.Row="1"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Stretch"
+                        Background="Silver"
+                        Height="5" />
+                <GroupBox Header="Warnings" Grid.Row="2">
+                    <RichTextBox x:Name="warningsTextBox" VerticalScrollBarVisibility="Visible" IsReadOnly="True">
+                        <RichTextBox.Resources>
+                            <Style TargetType="{x:Type Paragraph}">
+                                <Setter Property="Margin" Value="0" />
+                            </Style>
+                        </RichTextBox.Resources>
+                    </RichTextBox>
+                </GroupBox>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</Window>
